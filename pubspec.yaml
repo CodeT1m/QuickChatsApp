@@ -38,6 +38,14 @@ dependencies:
   velocity_x: ^3.5.1
   get: ^4.6.5
   # geolocator: ^9.0.1
+
+  # for authentication
+  firebase_auth: ^3.7.0
+  # for firebase
+  firebase_core: ^1.21.1
+  cloud_firestore: ^3.4.6
+  #for storing media to firebase
+  firebase_storage: ^10.3.7
   
 
 dev_dependencies:
