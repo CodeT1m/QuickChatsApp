@@ -53,7 +53,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-
+              10.heightBox,
               // phone field
               TextFormField(
                 controller: controller.phoneController,
