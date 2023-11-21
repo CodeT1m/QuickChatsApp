@@ -65,7 +65,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                   ),
                   labelText: 'Phone Number',
-                  prefixText: '+92',
+                  prefixText: '+60',
                   hintText: '1234567',
                   prefixIcon: const Icon(
                     Icons.phone_android_rounded,
@@ -138,9 +138,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       padding: const EdgeInsets.all(16),
                     ),
                     child: continueText.text.semiBold.size(16).make(),
-                    onPressed: () async{
-                      controller.isOtpSent.value = true;
-                      await controller.sendOtp();
+                    onPressed: () async {
+                      if (controller.isOtpSent.value == false) {
+                        controller.isOtpSent.value = true;
+                        await controller.sendOtp();
+                        print(controller.phoneController.text);
+                      } else {
+                        await controller.verifyOtp(context);
+                      }
                       // Get.to(() => HomeScreen(),
                       //     transition: Transition.downToUp);
                     },
