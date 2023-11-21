@@ -2,14 +2,17 @@ import 'package:demo_application/consts/colors.dart';
 import 'package:demo_application/consts/images.dart';
 import 'package:demo_application/consts/strings.dart';
 import 'package:demo_application/consts/utils.dart';
-import 'package:demo_application/views/intro_screen/verification_screen.dart';
+import 'package:demo_application/views/intro_screen/signin_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-main() {
+main() async {
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
         statusBarColor: Colors.white, statusBarIconBrightness: Brightness.dark),
