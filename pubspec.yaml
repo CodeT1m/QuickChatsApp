@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.13.1
   #for storing media to firebase
   firebase_storage: ^11.5.1
+  firebase_core_platform_interface: ^5.0.0
   
 
 dev_dependencies:
