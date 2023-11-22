@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">404387566695</string>
+    <string name="google_api_key" translatable="false">AIzaSyAex78o2cBQX0rGGf5g-Q1SsLorgO94fds</string>
+    <string name="google_app_id" translatable="false">1:404387566695:android:0ba2a94c06b8a114a630c2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAex78o2cBQX0rGGf5g-Q1SsLorgO94fds</string>
+    <string name="google_storage_bucket" translatable="false">quickchatapp-4b255.appspot.com</string>
+    <string name="project_id" translatable="false">quickchatapp-4b255</string>
+</resources>
