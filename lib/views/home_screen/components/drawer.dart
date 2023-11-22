@@ -1,11 +1,6 @@
-import 'package:demo_application/consts/colors.dart';
-import 'package:demo_application/consts/images.dart';
-import 'package:demo_application/consts/strings.dart';
-import 'package:demo_application/consts/utils.dart';
+import 'package:demo_application/consts/consts.dart';
+import 'package:demo_application/main.dart';
 import 'package:demo_application/views/profile_screen/components/profile_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 Widget drawer() {
   return Drawer(
@@ -84,6 +79,10 @@ Widget drawer() {
           ),
           const Spacer(),
           ListTile(
+            onTap: () async {
+              await auth.signOut();
+              Get.offAll(() => const ChatApp());
+            },
             leading: const Icon(
               logoutIcon,
               color: Colors.white,

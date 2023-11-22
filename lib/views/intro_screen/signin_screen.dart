@@ -2,7 +2,6 @@ import 'package:demo_application/consts/colors.dart';
 import 'package:demo_application/consts/strings.dart';
 import 'package:demo_application/consts/utils.dart';
 import 'package:demo_application/controllers/auth_controller.dart';
-import 'package:demo_application/views/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -32,51 +31,69 @@ class _VerificationScreenState extends State<VerificationScreen> {
           child: Column(
             children: [
               // username field
-              TextFormField(
-                controller: controller.usernameController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Vx.gray400,
-                    ),
-                  ),
-                  labelText: 'Username',
-                  hintText: 'e.g. Alex',
-                  prefixIcon: const Icon(
-                    Icons.phone_android_rounded,
-                    color: Vx.gray600,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Vx.gray600,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              10.heightBox,
-              // phone field
-              TextFormField(
-                controller: controller.phoneController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Vx.gray400,
-                    ),
-                  ),
-                  labelText: 'Phone Number',
-                  prefixText: '+60',
-                  hintText: '1234567',
-                  prefixIcon: const Icon(
-                    Icons.phone_android_rounded,
-                    color: Vx.gray600,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Vx.gray600,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              Form(
+                  key: controller.formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        validator: ((value) {
+                          if (value!.isEmpty || value.length < 6) {
+                            return "Please enter a valid username";
+                          }
+                          return null;
+                        }),
+                        controller: controller.usernameController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Vx.gray400,
+                            ),
+                          ),
+                          labelText: 'Username',
+                          hintText: 'e.g. Alex',
+                          prefixIcon: const Icon(
+                            Icons.phone_android_rounded,
+                            color: Vx.gray600,
+                          ),
+                          labelStyle: const TextStyle(
+                            color: Vx.gray600,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      10.heightBox,
+                      // phone field
+                      TextFormField(
+                        validator: ((value) {
+                          if (value!.isEmpty || value.length < 6) {
+                            return "Please enter your phone number";
+                          }
+                          return null;
+                        }),
+                        controller: controller.phoneController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Vx.gray400,
+                            ),
+                          ),
+                          labelText: 'Phone Number',
+                          prefixText: '+60',
+                          hintText: '1234567',
+                          prefixIcon: const Icon(
+                            Icons.phone_android_rounded,
+                            color: Vx.gray600,
+                          ),
+                          labelStyle: const TextStyle(
+                            color: Vx.gray600,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
               10.heightBox,
               otp.text.size(16).make(),
 
@@ -139,12 +156,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                     child: continueText.text.semiBold.size(16).make(),
                     onPressed: () async {
-                      if (controller.isOtpSent.value == false) {
-                        controller.isOtpSent.value = true;
-                        await controller.sendOtp();
-                        print(controller.phoneController.text);
-                      } else {
-                        await controller.verifyOtp(context);
+                      if (controller.formKey.currentState!.validate()) {
+                        if (controller.isOtpSent.value == false) {
+                          controller.isOtpSent.value = true;
+                          await controller.sendOtp();
+                          // print(controller.phoneController.text);
+                        } else {
+                          await controller.verifyOtp(context);
+                        }
                       }
                       // Get.to(() => HomeScreen(),
                       //     transition: Transition.downToUp);

@@ -14,6 +14,7 @@ class AuthController extends GetxController {
 
   // variables
   var isOtpSent = false.obs;
+  var formKey = GlobalKey<FormState>();
 
   //  auth variables
   late final PhoneVerificationCompleted phoneVerificationCompleted;
@@ -66,7 +67,9 @@ class AuthController extends GetxController {
           'id': user.uid,
           'name': usernameController.text.toString(),
           'phone': phoneController.text.toString(),
-        });
+          'about': '',
+          'image_url': '',
+        }, SetOptions(merge: true));
 
         VxToast.show(context, msg: loggedIn);
         Get.offAll(
