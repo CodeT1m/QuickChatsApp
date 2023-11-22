@@ -2,6 +2,7 @@ import 'package:demo_application/consts/colors.dart';
 import 'package:demo_application/consts/strings.dart';
 import 'package:demo_application/consts/utils.dart';
 import 'package:demo_application/controllers/auth_controller.dart';
+import 'package:demo_application/views/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -165,8 +166,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           await controller.verifyOtp(context);
                         }
                       }
-                      // Get.to(() => HomeScreen(),
-                      //     transition: Transition.downToUp);
+                      Get.to(() => HomeScreen(),
+                          transition: Transition.downToUp);
                     },
                   ),
                 ),

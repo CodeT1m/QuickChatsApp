@@ -33,9 +33,12 @@ Widget statusComponent() {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 child: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: btnColor, width: 3,)),
+                  // decoration: BoxDecoration(
+                  //     shape: BoxShape.circle,
+                  //     border: Border.all(
+                  //       color: btnColor,
+                  //       width: 3,
+                  //     )),
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 25,
